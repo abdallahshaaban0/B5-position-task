@@ -1,5 +1,6 @@
+import { IPeopleList } from './../shared/interface/people-list.interface';
 import { IPeople } from './../shared/interface/people.interface';
-import { PeopleService } from './people.service';
+import { PeopleService } from '../services/people.service';
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
@@ -18,10 +19,13 @@ export class PeopleComponent implements OnInit {
 
   searchPeople(): void {
     this.isLoading = true;
-    this._peopleServ.getPeopleList(this.searchVal).subscribe((response: any) => {
-      console.log(response);
-      this.peopleList = response.data;
+    this._peopleServ.getPeopleList(this.searchVal).subscribe((response: IPeopleList) => {
       this.isLoading = false;
+      if (response && response["data"]["length"] > 0) {
+        this.peopleList = response.data;
+      } else {
+        this.peopleList = [];
+      }
     })
   }
 

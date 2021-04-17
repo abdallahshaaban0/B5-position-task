@@ -1,5 +1,5 @@
 import { AngularMaterialModule } from './shared/module/angular-material/angular-material.module';
-import { PeopleService } from './people/people.service';
+import { PeopleService } from './services/people.service';
 import { PeopleComponent } from './people/people.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
