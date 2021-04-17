@@ -18,6 +18,7 @@ export class PeopleComponent implements OnInit {
   ngOnInit(): void { }
 
   searchPeople(): void {
+    // this.peopleList = []; can active it temporary for loader showed at top of page or with custom css
     this.isLoading = true;
     this._peopleServ.getPeopleList(this.searchVal).subscribe((response: IPeopleList) => {
       this.isLoading = false;
